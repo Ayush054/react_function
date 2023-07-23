@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact element={<FirstPage />} />
+        <Route path="/"  element={<FirstPage />} />
         <Route path="/second" element={<SecondPage />} />
       </Routes>
     </Router>

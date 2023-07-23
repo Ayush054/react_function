@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Checkbox } from "@mui/material";
   import TreeItem  from '@mui/lab/TreeItem';
   import TreeView from '@mui/lab/TreeView';
@@ -24,12 +24,12 @@ const useStyles = makeStyles({
   },
 });
 
-const DepartmentList: React.FC = () => {
+const DepartmentList= () => {
   const classes = useStyles();
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
   const handleSelect = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    _event: React.ChangeEvent<HTMLInputElement>,
     nodeId: string,
     subNodes?: string[]
   ) => {
@@ -96,7 +96,7 @@ const DepartmentList: React.FC = () => {
           </div>
         }
       >
-        {department.sub_departments.map((subDepartment) => (
+        {department.sub_departments.map((subDepartment: string) => (
           <TreeItem
             key={subDepartment}
             nodeId={department.department + "-" + subDepartment}
@@ -123,7 +123,7 @@ const DepartmentList: React.FC = () => {
   };
 
   return (
-    <Container component="main" maxWidth="m" sx={{
+    <Container component="main" maxWidth="md" sx={{
       marginTop: 8,
       display: 'flex',
       flexDirection: 'column',

@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import DataTable from "./DataTable";
 import DepartmentList from "./DepartmentList";
 import Typography from "@mui/material/Typography";
@@ -6,19 +6,27 @@ import Container from '@mui/material/Container';
 
 const SecondPage = () => {
 
-  const userDetails = localStorage.getItem("userDetails");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const userDetails = localStorage.getItem("userDetails");
 
     if (!userDetails) {
       alert("Please enter your details before accessing this page.");
-     window.location.href = "/";
+      window.location.href = "/";
+    } else {
+      const { name, phone, email } = JSON.parse(userDetails);
+      setName(name);
+      setPhone(phone);
+      setEmail(email);
     }
-
-    const { name, phone, email } = JSON.parse(userDetails);
- 
+  }, []);
 
   return (
     
-    <Container component="main" maxWidth="m" sx={{
+    <Container component="main" maxWidth="md" sx={{
         marginTop: 8,
         display: 'flex',
         flexDirection: 'column',

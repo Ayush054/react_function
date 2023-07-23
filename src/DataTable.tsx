@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import  { useEffect, useState } from "react";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
@@ -10,7 +10,7 @@ interface Post {
   body: string;
 }
 
-const DataTable: React.FC = () => {
+const DataTable = () => {
   const [data, setData] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const DataTable: React.FC = () => {
 
   return (
     
-        <Container component="main" fixed maxWidth="sx" sx={{
+        <Container component="main" fixed maxWidth="md" sx={{
         marginTop: 4,
        alignItems: 'center',
         height: 400, width: "100%"
@@ -38,8 +38,11 @@ const DataTable: React.FC = () => {
       <DataGrid
         rows={data}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5, 10, 20]}
+       
+        initialState={{
+         pagination: { paginationModel: { pageSize: 5 } },
+        }}
+        pageSizeOptions={[5, 10, 25]}
         checkboxSelection
         />
         </Container>
